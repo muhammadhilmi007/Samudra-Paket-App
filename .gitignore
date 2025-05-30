@@ -1,0 +1,11 @@
+node_modules
+.next
+build
+dist
+.env
+.env.*
+.DS_Store
+*.log
+coverage
+.expo
+web-build

@@ -1,0 +1,7 @@
+{
+  "name": "@samudra/ui",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Shared UI components for Samudra ERP (web/mobile)",
+  "main": "index.js"
+}

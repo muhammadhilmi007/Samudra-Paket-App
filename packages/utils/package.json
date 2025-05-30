@@ -1,0 +1,7 @@
+{
+  "name": "@samudra/utils",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Shared utilities for Samudra ERP",
+  "main": "index.js"
+}

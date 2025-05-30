@@ -1,0 +1,21 @@
+{
+  "name": "@samudra/eslint-config",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Shared ESLint configurations for Samudra ERP",
+  "main": "index.js",
+  "files": [
+    "base.js",
+    "nextjs.js",
+    "react.js",
+    "node.js"
+  ],
+  "dependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}

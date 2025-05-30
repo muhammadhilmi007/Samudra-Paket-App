@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color palette as defined in Windsurf Rules */
+    --color-primary: 37, 99, 235; /* #2563EB - Blue */
+    --color-secondary: 16, 185, 129; /* #10B981 - Green */
+    --color-accent: 245, 158, 11; /* #F59E0B - Amber */
+    --color-neutral: 107, 114, 128; /* #6B7280 - Gray */
+    --color-error: 239, 68, 68; /* #EF4444 - Red */
+    --color-success: 34, 197, 94; /* #22C55E */
+    --color-warning: 249, 115, 22; /* #F97316 */
+    --color-info: 59, 130, 246; /* #3B82F6 */
+    --color-background: 249, 250, 251; /* #F9FAFB */
+    --color-surface: 255, 255, 255; /* #FFFFFF */
+    --color-border: 229, 231, 235; /* #E5E7EB */
+    --color-text-primary: 17, 24, 39; /* #111827 */
+    --color-text-secondary: 75, 85, 99; /* #4B5563 */
+  }
+
+  body {
+    @apply bg-background text-text-primary;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+  
+  .card {
+    @apply p-6 rounded-lg bg-surface border border-border shadow-sm;
+  }
+}

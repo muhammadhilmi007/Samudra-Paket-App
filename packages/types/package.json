@@ -1,0 +1,7 @@
+{
+  "name": "@samudra/types",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Shared type definitions for Samudra ERP",
+  "main": "index.js"
+}
