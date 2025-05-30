@@ -11,15 +11,20 @@
     "docs"
   ],
   "devDependencies": {
-    "turbo": "^1.13.3",
-    "eslint": "^8.56.0",
-    "prettier": "^3.2.5"
+    "eslint": "^8.57.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.2.5",
+    "turbo": "^1.13.3"
   },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "typecheck": "turbo run typecheck",
+    "prepare": "husky"
   },
   "packageManager": "pnpm@10.11.0+sha256.a69e9cb077da419d47d18f1dd52e207245b29cac6e076acedbeb8be3b1a67bd7"
 }

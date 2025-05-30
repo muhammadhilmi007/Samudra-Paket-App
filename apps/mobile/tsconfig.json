@@ -1,5 +1,5 @@
 {
-  "extends": "@samudra/tsconfig/expo.json",
+  "extends": "../../packages/tsconfig/expo.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

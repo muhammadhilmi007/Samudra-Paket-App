@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
+  "display": "Root",
   "compilerOptions": {
-    "composite": false,
+    "composite": true,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
@@ -14,15 +14,16 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2020",
-    "module": "ESNext",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "strict": true
   },
-  "exclude": ["node_modules", "**/node_modules/*", "**/dist/*"]
+  "files": [],
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "./apps/web" },
+    { "path": "./apps/mobile" },
+    { "path": "./apps/api" },
+    { "path": "./packages/ui" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/types" }
+  ]
 }

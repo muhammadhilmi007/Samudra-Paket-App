@@ -1,13 +1,12 @@
 module.exports = {
   root: true,
-  extends: ["@samudra/eslint-config/react"],
+  extends: ["@samudra/eslint-config/react-native"],
   parserOptions: {
     project: "./tsconfig.json",
   },
   rules: {
-    // Mobile-specific rules
-    "react-native/no-unused-styles": "error",
-    "react-native/no-inline-styles": "warn",
-    "react-native/no-color-literals": "warn",
+    // Project-specific overrides
+    "react-native/no-color-literals": "warn", // Allow color literals during initial development
+    "@typescript-eslint/no-explicit-any": "warn", // Warn instead of error during initial development
   },
 };

@@ -1,0 +1,21 @@
+{
+  "extends": "../../packages/tsconfig/javascript.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "module": "commonjs",
+    "target": "es2020",
+    "lib": ["es2020"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/api/*": ["./src/api/*"],
+      "@/business/*": ["./src/business/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/infrastructure/*": ["./src/infrastructure/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/config/*": ["./src/config/*"]
+    }
+  },
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}

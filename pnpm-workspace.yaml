@@ -1,7 +1,9 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
-  - 'tools/*'
-  - 'config'
-  - 'scripts'
-  - 'docs'
+  - apps/*
+  - packages/*
+  - tools/*
+  - config
+  - scripts
+  - docs
+ignoredBuiltDependencies:
+  - unrs-resolver
