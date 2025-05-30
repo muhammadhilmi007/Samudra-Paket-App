@@ -1,0 +1,141 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // Next.js (Web) Debugging Configurations
+    {
+      "name": "Next.js: Debug Server-Side",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      },
+      "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+    },
+    {
+      "name": "Next.js: Debug Client-Side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/apps/web",
+      "sourceMapPathOverrides": {
+        "webpack://_N_E/*": "${webRoot}/*",
+        "webpack:///*": "*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    },
+    {
+      "name": "Next.js: Full Stack",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      },
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome",
+        "webRoot": "${workspaceFolder}/apps/web"
+      }
+    },
+
+    // Express.js (API) Debugging Configurations
+    {
+      "name": "API: Debug Server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/api",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "api:*"
+      },
+      "outFiles": ["${workspaceFolder}/apps/api/**/*.js", "!**/node_modules/**"]
+    },
+    {
+      "name": "API: Attach to Process",
+      "type": "node",
+      "request": "attach",
+      "processId": "${command:PickProcess}",
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/apps/api/**/*.js", "!**/node_modules/**"]
+    },
+    {
+      "name": "API: Debug Tests",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/api",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["test"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"]
+    },
+
+    // React Native (Mobile) Debugging Configurations
+    {
+      "name": "Mobile: Debug in Expo",
+      "type": "reactnative",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/mobile",
+      "platform": "expo",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Mobile: Attach to Packager",
+      "type": "reactnative",
+      "request": "attach",
+      "cwd": "${workspaceFolder}/apps/mobile",
+      "port": 19000,
+      "sourceMaps": true
+    },
+    {
+      "name": "Mobile: Debug Android",
+      "type": "reactnative",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/mobile",
+      "platform": "android",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Mobile: Debug iOS",
+      "type": "reactnative",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/mobile",
+      "platform": "ios",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Web + API",
+      "configurations": ["Next.js: Debug Server-Side", "API: Debug Server"]
+    },
+    {
+      "name": "Full Stack: All Services",
+      "configurations": ["Next.js: Debug Server-Side", "API: Debug Server", "Mobile: Debug in Expo"]
+    }
+  ]
+}

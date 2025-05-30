@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # Database Services
+  mongodb:
+    image: mongo:6.0
+    container_name: samudra-mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-password}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-samudra_erp}
+    volumes:
+      - mongodb_data:/data/db
+      - ./docker/config/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - samudra_network
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: samudra-redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+      - ./docker/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: ['redis-server', '/usr/local/etc/redis/redis.conf']
+    networks:
+      - samudra_network
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Services
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.api
+    container_name: samudra-api
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./apps/api:/app/apps/api
+      - ./packages:/app/packages
+      - node_modules_api:/app/apps/api/node_modules
+      - node_modules_packages:/app/packages/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASSWORD:-password}@mongodb:27017/${MONGO_DATABASE:-samudra_erp}?authSource=admin
+      - REDIS_URI=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET:-samudra_jwt_secret_dev}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - samudra_network
+    command: pnpm --filter=api dev
+
+  # Web Services
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.web
+    container_name: samudra-web
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./apps/web:/app/apps/web
+      - ./packages:/app/packages
+      - node_modules_web:/app/apps/web/node_modules
+      - node_modules_packages:/app/packages/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    depends_on:
+      - api
+    networks:
+      - samudra_network
+    command: pnpm --filter=web dev
+
+networks:
+  samudra_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  redis_data:
+  node_modules_api:
+  node_modules_web:
+  node_modules_packages:

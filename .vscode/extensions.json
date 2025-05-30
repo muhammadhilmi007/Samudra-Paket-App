@@ -1,0 +1,42 @@
+{
+  "recommendations": [
+    // JavaScript/TypeScript debugging
+    "ms-vscode.js-debug",
+    "ms-vscode.vscode-js-profile-flame",
+    "ms-vscode.vscode-js-profile-table",
+
+    // React/Next.js debugging
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+
+    // React Native debugging
+    "msjsdiag.vscode-react-native",
+
+    // Node.js/Express debugging
+    "mikestead.dotenv",
+    "mongodb.mongodb-vscode",
+    "rangav.vscode-thunder-client",
+
+    // Testing debugging
+    "orta.vscode-jest",
+    "firsttris.vscode-jest-runner",
+    "zixuanchen.vitest-explorer",
+
+    // Docker debugging
+    "ms-azuretools.vscode-docker",
+
+    // General debugging tools
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "yoavbls.pretty-ts-errors",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "gruntfuggly.todo-tree",
+    "wix.vscode-import-cost",
+    "wayou.vscode-todo-highlight",
+    "usernamehw.errorlens",
+    "christian-kohler.path-intellisense"
+  ]
+}

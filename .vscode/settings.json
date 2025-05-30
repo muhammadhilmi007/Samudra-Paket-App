@@ -1,0 +1,88 @@
+{
+  // General debugging settings
+  "debug.javascript.autoAttachFilter": "smart",
+  "debug.javascript.terminalOptions": {
+    "skipFiles": ["<node_internals>/**"]
+  },
+  "debug.javascript.unmapMissingSources": true,
+  "debug.toolBarLocation": "docked",
+  "debug.inlineValues": true,
+  "debug.console.fontSize": 14,
+  "debug.showInStatusBar": "always",
+
+  // Next.js specific debugging settings
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.validate.enable": true,
+  "javascript.suggestionActions.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Express.js specific debugging settings
+  "node-debug.showUseDebuggerExtensionPrompt": false,
+  "debug.node.autoAttach": "on",
+
+  // React Native specific debugging settings
+  "react-native-tools.projectRoot": "./apps/mobile",
+  "react-native-tools.networkInspector.enabled": true,
+  "react-native-tools.logLevel": "info",
+
+  // Source map settings for better debugging
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+
+  // Terminal settings for debugging
+  "terminal.integrated.env.windows": {
+    "NODE_ENV": "development",
+    "DEBUG": "api:*,web:*"
+  },
+  "terminal.integrated.env.linux": {
+    "NODE_ENV": "development",
+    "DEBUG": "api:*,web:*"
+  },
+  "terminal.integrated.env.osx": {
+    "NODE_ENV": "development",
+    "DEBUG": "api:*,web:*"
+  },
+
+  // File associations for debugging
+  "files.associations": {
+    ".env.*": "dotenv",
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact"
+  },
+
+  // Tailwind CSS IntelliSense for better debugging of styles
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascript",
+    "typescript": "typescript",
+    "typescriptreact": "typescript"
+  },
+
+  // Editor settings for better debugging experience
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Exclude patterns for better performance during debugging
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/coverage": true
+  },
+
+  // Color customization for debugging UI elements
+  "workbench.colorCustomizations": {
+    "debugToolBar.background": "#2563eb",
+    "debugToolBar.border": "#1d4ed8",
+    "editor.stackFrameHighlightBackground": "#2563eb33",
+    "editor.focusedStackFrameHighlightBackground": "#2563eb66"
+  }
+}

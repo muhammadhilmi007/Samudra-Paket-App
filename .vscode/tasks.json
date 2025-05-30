@@ -1,0 +1,308 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // General development tasks
+    {
+      "label": "Start All Development",
+      "type": "shell",
+      "command": "pnpm dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      }
+    },
+    {
+      "label": "Build All",
+      "type": "shell",
+      "command": "pnpm build",
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+
+    // Web app specific tasks
+    {
+      "label": "Web: Start Development",
+      "type": "shell",
+      "command": "pnpm --filter=web dev",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-web"
+      }
+    },
+    {
+      "label": "Web: Build",
+      "type": "shell",
+      "command": "pnpm --filter=web build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "build-web"
+      }
+    },
+    {
+      "label": "Web: Lint",
+      "type": "shell",
+      "command": "pnpm --filter=web lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "lint"
+      }
+    },
+    {
+      "label": "Web: Type Check",
+      "type": "shell",
+      "command": "pnpm --filter=web typecheck",
+      "problemMatcher": ["$tsc"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "typecheck"
+      }
+    },
+
+    // API specific tasks
+    {
+      "label": "API: Start Development",
+      "type": "shell",
+      "command": "pnpm --filter=api dev",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-api"
+      }
+    },
+    {
+      "label": "API: Build",
+      "type": "shell",
+      "command": "pnpm --filter=api build",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "build-api"
+      }
+    },
+    {
+      "label": "API: Lint",
+      "type": "shell",
+      "command": "pnpm --filter=api lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "lint"
+      }
+    },
+    {
+      "label": "API: Type Check",
+      "type": "shell",
+      "command": "pnpm --filter=api typecheck",
+      "problemMatcher": ["$tsc"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "typecheck"
+      }
+    },
+
+    // Mobile specific tasks
+    {
+      "label": "Mobile: Start Development",
+      "type": "shell",
+      "command": "pnpm --filter=mobile start",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-mobile"
+      }
+    },
+    {
+      "label": "Mobile: Start Android",
+      "type": "shell",
+      "command": "pnpm --filter=mobile android",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-mobile"
+      }
+    },
+    {
+      "label": "Mobile: Start iOS",
+      "type": "shell",
+      "command": "pnpm --filter=mobile ios",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev-mobile"
+      }
+    },
+    {
+      "label": "Mobile: Lint",
+      "type": "shell",
+      "command": "pnpm --filter=mobile lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "lint"
+      }
+    },
+    {
+      "label": "Mobile: Type Check",
+      "type": "shell",
+      "command": "pnpm --filter=mobile typecheck",
+      "problemMatcher": ["$tsc"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "typecheck"
+      }
+    },
+
+    // Docker tasks for development environment
+    {
+      "label": "Docker: Start Development Environment",
+      "type": "shell",
+      "command": "docker-compose up -d",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Docker: Stop Development Environment",
+      "type": "shell",
+      "command": "docker-compose down",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Docker: View Logs",
+      "type": "shell",
+      "command": "docker-compose logs -f",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "docker-logs"
+      }
+    },
+
+    // Testing tasks
+    {
+      "label": "Test All",
+      "type": "shell",
+      "command": "pnpm test",
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Web: Test",
+      "type": "shell",
+      "command": "pnpm --filter=web test",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "test"
+      }
+    },
+    {
+      "label": "API: Test",
+      "type": "shell",
+      "command": "pnpm --filter=api test",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "test"
+      }
+    },
+    {
+      "label": "Mobile: Test",
+      "type": "shell",
+      "command": "pnpm --filter=mobile test",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "test"
+      }
+    }
+  ]
+}

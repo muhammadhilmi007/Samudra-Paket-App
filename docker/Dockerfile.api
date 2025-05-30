@@ -1,0 +1,41 @@
+FROM node:18-alpine AS base
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@10.11.0 --activate
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+
+# Copy root workspace files
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+COPY apps/api/package.json ./apps/api/package.json
+COPY packages/*/package.json ./packages/
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Development image
+FROM base AS development
+WORKDIR /app
+
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
+COPY --from=deps /app/packages ./packages
+
+# Copy the rest of the application
+COPY . .
+
+# Set environment variables
+ENV NODE_ENV=development
+ENV PORT=3001
+
+# Expose port
+EXPOSE 3001
+
+# Command to run the application
+CMD ["pnpm", "--filter=api", "dev"]
