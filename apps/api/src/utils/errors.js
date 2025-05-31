@@ -7,13 +7,18 @@
  * Base Error class for all application errors
  */
 class BaseError extends Error {
+  /**
+   * @param {string} message
+   * @param {number} [statusCode=500]
+   * @param {any} [details=null]
+   */
   constructor(message, statusCode = 500, details = null) {
     super(message);
     this.name = this.constructor.name;
     this.statusCode = statusCode;
     this.details = details;
     this.isOperational = true; // Used to distinguish operational errors from programming errors
-    
+
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -59,5 +64,5 @@ module.exports = {
   ValidationError,
   AuthError,
   BusinessError,
-  InfrastructureError
+  InfrastructureError,
 };

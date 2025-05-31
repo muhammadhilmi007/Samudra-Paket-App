@@ -2,12 +2,12 @@
  * Samudra ERP Mobile App
  * React Native with Expo SDK using TypeScript
  */
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
-import { Provider as StoreProvider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider as StoreProvider } from 'react-redux';
 
 // Placeholder for actual store implementation
 const store = {

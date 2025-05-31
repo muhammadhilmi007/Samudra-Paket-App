@@ -84,5 +84,6 @@
     "debugToolBar.border": "#1d4ed8",
     "editor.stackFrameHighlightBackground": "#2563eb33",
     "editor.focusedStackFrameHighlightBackground": "#2563eb66"
-  }
+  },
+  "editor.codeActions.triggerOnFocusChange": true
 }
